@@ -175,6 +175,18 @@ modelFits['3']['ArchT'].add_many(  # Hyperpolarising: actively extrudes Hydrogen
     ('v0',    43,     True, -1e15,  1e15, None),
     ('v1',    17.1,   True, -1e15,  1e15, None))
 
+modelFits['3']['Jaws'].add_many(  # Jaws: a red-shifted halorhodopsin
+    ('g0',    0.167e3, True, 0.001, 1e6,   None),   # Max conductance (ms^-1 from Table 1)
+    ('phi_m', 0.95e18, True, 1e15,  1e19,  None),   # Photon flux-dependent rate constant
+    ('k_a',   1.0,     True, 0.001, 1000,  None),   # Activation rate constant (ms^-1)
+    ('k_r',   0.05,    True, 0.001, 1000,  None),   # Recovery rate constant (ms^-1)
+    ('p',     0.8,     True, 0.1,   5,     None),   # Fraction for activation pathway
+    ('q',     1.0,     True, 0.1,   5,     None),   # Fraction for recovery pathway
+    ('Gd',    0.02e-2, True, 0.0001,1,     None),   # Deactivation factor
+    ('Gr0',   0.05,    True, 0.0001,0.1,   None),   # Baseline recovery rate
+    ('E',     -400,    True, -1000, 1000,  None),   # Reversal potential (mV)
+    ('v0',    37,      True, -1e15, 1e15,  None),   # Voltage offset (mV)
+    ('v1',    15,      True, -1e15, 1e15,  None))   # Voltage scaling factor (mV)
 
 modelFits['4']['ChR2'].add_many(
     ('g0',      1.14e5, True, 0.001,1e15,   None),
@@ -195,6 +207,24 @@ modelFits['4']['ChR2'].add_many(
     ('v0',      43,     True, -1e15,1e15,   None),
     ('v1',      17.1,   True, -1e15,1e15,   None))
 
+modelFits['4']['Jaws'].add_many(
+    ('g0',      0.167e3,  True, 0.001,  1e15,   None),  # Max conductance (ms^-1 from Table 1)
+    ('gam',     0.005,    True, 0.0,    1,      None),  # Photoactivation rate (P0 to P1)
+    ('phi_m',   0.95e18,  True, 1e15,   1e19,   None),  # Photon flux efficiency
+    ('k1',      1.0,      True, 0.001,  1e5,    None),  # Transition rate P1 -> P2 (chloride release)
+    ('k2',      0.5,      True, 0.001,  1e5,    None),  # Transition rate P2 -> P3 (precursor state)
+    ('p',       0.8,      True, 0.1,    5,      None),  # Fraction for active state transition
+    ('Gf0',     0.02,     True, 0,      1e3,    None),  # Conductance factor (P0 -> P1)
+    ('k_f',     0.04,     True, 0.001,  1e3,    None),  # Forward rate constant (P1 -> P2)
+    ('Gb0',     0.01,     True, 0,      1e3,    None),  # Baseline conductance (P2 -> P3)
+    ('k_b',     0.03,     True, 0.001,  1e3,    None),  # Backward rate constant (P3 -> P2)
+    ('q',       1.0,      True, 0.1,    5,      None),  # Fraction for recovery pathway
+    ('Gd1',     0.1,      True, 0.01,   1,      None),  # Deactivation factor (P3 -> P0)
+    ('Gd2',     0.02,     True, 0.01,   1,      None),  # Deactivation factor (P3 -> P2)
+    ('Gr0',     0.05,     True, 1e-6,   1,      None),  # Recovery baseline (P3 -> P0)
+    ('E',       -400,     True, -1000,  1000,   None),  # Reversal potential for chloride
+    ('v0',      37,       True, -1e15,  1e15,   None),  # Voltage offset parameter
+    ('v1',      15,       True, -1e15,  1e15,   None))  # Voltage scaling factor
 
 modelFits['6']['ChR2'].add_many(
     ('g0',      2.52e4, True, 0.0,  1e15, None),
